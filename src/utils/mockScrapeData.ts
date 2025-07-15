@@ -1,18 +1,13 @@
-// utils/mockScrapeData.ts
-
-// Define supported blog domains
 type BlogDomain = 'techcrunch.com' | 'medium.com' | 'default';
 
-// Blog data structure
 export interface BlogData {
   title: string;
   content: string;
   author: string;
   date: string;
-  url?: string; // optional: added when returning
+  url?: string; 
 }
 
-// Mock data for known domains
 const mockBlogs: Record<BlogDomain, BlogData> = {
   'techcrunch.com': {
     title: 'The Future of AI in Software Development',
@@ -34,7 +29,6 @@ const mockBlogs: Record<BlogDomain, BlogData> = {
   },
 };
 
-// Main mock scraper function
 export const mockScrapeData = (url: string): BlogData => {
   const matchedDomain = (Object.keys(mockBlogs) as BlogDomain[]).find(domain =>
     url.includes(domain)
@@ -42,6 +36,6 @@ export const mockScrapeData = (url: string): BlogData => {
 
   return {
     ...mockBlogs[matchedDomain],
-    url, // attach the original URL
+    url,
   };
 };

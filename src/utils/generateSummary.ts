@@ -1,4 +1,3 @@
-// utils/generateSummary.ts
 
 export const generateSummary = (content: string): string => {
   const sentences = content.split('.').filter(s => s.trim().length > 0);
