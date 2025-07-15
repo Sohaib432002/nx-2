@@ -100,7 +100,7 @@ const BlogSummariser = () => {
 
         {error && <div className="mb-6"><ErrorMessage message={error} /></div>}
         {loading && <LoadingSpinner />}
-        {/* {blogData && !loading && <BlogContent data={blogData} summary={summary} urduSummary={urduSummary} />} */}
+         {blogData && !loading && <BlogContent data={blogData} summary={summary} urduSummary={urduSummary} />} 
         {!blogData && !loading && (
           <div className="bg-gray-50 rounded-lg p-6 border border-gray-200">
             <h3 className="text-lg font-medium text-gray-900 mb-3">Try these demo URLs:</h3>
