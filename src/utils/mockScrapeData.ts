@@ -1,19 +1,23 @@
 // utils/mockScrapeData.ts
 
+// Define supported blog domains
 type BlogDomain = 'techcrunch.com' | 'medium.com' | 'default';
 
-interface BlogData {
+// Blog data structure
+export interface BlogData {
   title: string;
   content: string;
   author: string;
   date: string;
+  url?: string; // optional: added when returning
 }
 
+// Mock data for known domains
 const mockBlogs: Record<BlogDomain, BlogData> = {
   'techcrunch.com': {
     title: 'The Future of AI in Software Development',
     content: 'Artificial intelligence is revolutionizing software development. AI tools can now help developers write code faster...',
-    author: 'Awais ',
+    author: 'Awais',
     date: '2020-02-15',
   },
   'medium.com': {
@@ -30,10 +34,14 @@ const mockBlogs: Record<BlogDomain, BlogData> = {
   },
 };
 
+// Main mock scraper function
 export const mockScrapeData = (url: string): BlogData => {
-  for (const domain of Object.keys(mockBlogs) as BlogDomain[]) {
-    if (url.includes(domain)) return mockBlogs[domain];
-  }
+  const matchedDomain = (Object.keys(mockBlogs) as BlogDomain[]).find(domain =>
+    url.includes(domain)
+  ) || 'default';
 
-  return mockBlogs['default'];
+  return {
+    ...mockBlogs[matchedDomain],
+    url, // attach the original URL
+  };
 };
