@@ -14,7 +14,7 @@ type Props = {
   urduSummary: string;
 };
 
-const BlogContent = ({ data, summary, urduSummary }: Props) => (
+const BlogContent = ({ data, summary, urduSummary }: any) => (
   <div className="space-y-6 animate-fadeIn">
     <div className="bg-white rounded-lg border border-gray-200 p-6 shadow-sm">
       <div className="flex items-center mb-4">
